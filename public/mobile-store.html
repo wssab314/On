@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On 移动端商城</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['\"Poppins\"', 'ui-sans-serif', 'system-ui'],
+              body: ['\"Inter\"', 'ui-sans-serif', 'system-ui'],
+            },
+            colors: {
+              brand: {
+                DEFAULT: '#0F1A2A',
+                light: '#182B44',
+                accent: '#5AF1D8',
+              },
+            },
+            boxShadow: {
+              soft: '0 20px 45px -20px rgba(15, 26, 42, 0.4)',
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-yEMN6lB7tBkD+7MVzjsw0qei+0g8xSzrU5Xcd53mtwVQzB1TR1+t0NenE2no0RvrRZtGJPD7W82dMan3Zhdz+Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Custom styles -->
+    <style>
+      body {
+        font-family: 'Inter', ui-sans-serif, system-ui;
+        background: linear-gradient(145deg, #f6f8fb, #e8eef6);
+      }
+
+      .gradient-focus:focus {
+        outline: none;
+        border-image-slice: 1;
+        border-width: 2px;
+        border-image-source: linear-gradient(135deg, #5af1d8, #4a6cf7);
+      }
+
+      .glass-card {
+        backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.85);
+      }
+
+      @media (max-width: 640px) {
+        .mobile-hero {
+          background-position: top;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-brand bg-white">
+    <!-- Sticky top navigation -->
+    <header class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
+      <nav
+        class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8"
+        aria-label="主导航"
+      >
+        <a href="#home" class="flex items-center gap-2 text-lg font-semibold">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white">
+            <i class="fa-solid fa-bolt"></i>
+          </span>
+          On 移动商城
+        </a>
+        <div class="hidden gap-6 text-sm font-medium md:flex">
+          <a href="#collections" class="transition hover:text-brand-accent">新品上架</a>
+          <a href="#features" class="transition hover:text-brand-accent">科技亮点</a>
+          <a href="#stories" class="transition hover:text-brand-accent">社区故事</a>
+          <a href="#newsletter" class="transition hover:text-brand-accent">加入我们</a>
+        </div>
+        <div class="hidden items-center gap-3 md:flex">
+          <button
+            class="rounded-full border border-brand/10 px-4 py-2 text-sm font-semibold text-brand transition hover:-translate-y-0.5 hover:border-brand hover:shadow-soft"
+          >
+            登录
+          </button>
+          <button
+            class="rounded-full bg-brand text-white px-4 py-2 text-sm font-semibold transition transform hover:scale-105 hover:shadow-soft"
+          >
+            立即选购
+          </button>
+        </div>
+        <button class="text-xl md:hidden" aria-label="打开菜单">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </nav>
+    </header>
+
+    <main class="pt-24" id="home">
+      <!-- Hero section -->
+      <section
+        class="relative mx-auto flex max-w-6xl flex-col overflow-hidden rounded-3xl bg-brand text-white shadow-soft lg:flex-row"
+      >
+        <div class="relative w-full space-y-8 px-8 py-16 lg:w-1/2 lg:px-12">
+          <span class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs uppercase tracking-widest">全新发布</span>
+          <h1 class="font-display text-4xl leading-tight sm:text-5xl">
+            轻盈能量，随行随跑。
+          </h1>
+          <p class="text-sm text-white/70 sm:text-base">
+            灵感源自阿尔卑斯脉动，自研CloudTec®缓震系统带来无与伦比的回弹。以城市为赛场，一步抵达未来。
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="#collections"
+              class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand transition transform hover:scale-105"
+            >
+              <i class="fa-solid fa-store"></i>
+              探索系列
+            </a>
+            <a
+              href="#try"
+              class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold transition transform hover:scale-105"
+            >
+              <i class="fa-solid fa-mobile-screen"></i>
+              预约试穿
+            </a>
+          </div>
+          <div class="grid grid-cols-3 gap-6 pt-6">
+            <div>
+              <p class="text-3xl font-bold">6.2k</p>
+              <p class="text-xs text-white/70">真实用户评价</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold">18h</p>
+              <p class="text-xs text-white/70">全天候续航</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold">92%</p>
+              <p class="text-xs text-white/70">推荐指数</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative w-full lg:w-1/2">
+          <img
+            class="mobile-hero h-full w-full object-cover"
+            src="https://source.unsplash.com/featured/?athlete,running"
+            alt="奔跑场景"
+          />
+          <div class="absolute inset-x-6 bottom-6 grid grid-cols-3 gap-4">
+            <article class="glass-card rounded-2xl p-4 text-sm text-brand">
+              <h3 class="font-semibold">立体支撑</h3>
+              <p class="text-xs text-brand/70">三区域稳定单元锁定脚踝核心，避免长跑疲劳。</p>
+            </article>
+            <article class="glass-card rounded-2xl p-4 text-sm text-brand">
+              <h3 class="font-semibold">轻盈材质</h3>
+              <p class="text-xs text-brand/70">可回收纱线与透气网面组合，步履如风。</p>
+            </article>
+            <article class="glass-card rounded-2xl p-4 text-sm text-brand">
+              <h3 class="font-semibold">智能配速</h3>
+              <p class="text-xs text-brand/70">连接On App，实时调节训练节奏。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Collection section -->
+      <section id="collections" class="mx-auto mt-20 max-w-6xl px-6 lg:px-8">
+        <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+          <div>
+            <h2 class="font-display text-3xl text-brand">精选系列</h2>
+            <p class="mt-2 text-sm text-brand/70">针对不同场景定制贴合体验，满足你对速度与舒适的双重追求。</p>
+          </div>
+          <div class="flex gap-3">
+            <button class="rounded-full border border-brand/20 px-5 py-2 text-sm font-semibold text-brand transition transform hover:scale-105 hover:border-brand">
+              跑步
+            </button>
+            <button class="rounded-full border border-brand/20 px-5 py-2 text-sm font-semibold text-brand transition transform hover:scale-105 hover:border-brand">
+              日常通勤
+            </button>
+            <button class="rounded-full border border-brand/20 px-5 py-2 text-sm font-semibold text-brand transition transform hover:scale-105 hover:border-brand">
+              越野
+            </button>
+          </div>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <!-- Product card -->
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
+            <div class="relative">
+              <img
+                src="https://source.unsplash.com/featured/?on+running+shoe"
+                alt="云速 4 代"
+                class="h-60 w-full object-cover"
+              />
+              <span class="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand">新品</span>
+            </div>
+            <div class="flex flex-1 flex-col gap-3 p-6">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-brand">云速 4 代</h3>
+                <p class="text-brand-accent font-semibold">¥1,280</p>
+              </div>
+              <p class="text-sm text-brand/70">
+                轻量化结构与CloudTec® 科技完美融合，刷新城市跑步节奏。
+              </p>
+              <div class="mt-auto flex items-center justify-between text-xs text-brand/60">
+                <span class="inline-flex items-center gap-1"><i class="fa-solid fa-gauge"></i> 速度训练</span>
+                <span class="inline-flex items-center gap-1"><i class="fa-solid fa-droplet"></i> 防泼水</span>
+              </div>
+              <button
+                class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition transform hover:scale-105"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+                加入购物袋
+              </button>
+            </div>
+          </article>
+
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
+            <div class="relative">
+              <img
+                src="https://source.unsplash.com/featured/?trail+running"
+                alt="云超 2 代"
+                class="h-60 w-full object-cover"
+              />
+              <span class="absolute left-4 top-4 rounded-full bg-brand text-xs font-semibold text-white px-3 py-1">热销</span>
+            </div>
+            <div class="flex flex-1 flex-col gap-3 p-6">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-brand">云超 2 代</h3>
+                <p class="text-brand-accent font-semibold">¥1,680</p>
+              </div>
+              <p class="text-sm text-brand/70">
+                双层CloudTec®缓震和双密度脚垫，让山路征途也能如履平地。
+              </p>
+              <div class="mt-auto flex items-center justify-between text-xs text-brand/60">
+                <span class="inline-flex items-center gap-1"><i class="fa-solid fa-mountain"></i> 高抓地</span>
+                <span class="inline-flex items-center gap-1"><i class="fa-solid fa-temperature-arrow-down"></i> 四季适用</span>
+              </div>
+              <button
+                class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition transform hover:scale-105"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+                加入购物袋
+              </button>
+            </div>
+          </article>
+
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
+            <div class="relative">
+              <img
+                src="https://source.unsplash.com/featured/?sneakers,city"
+                alt="云尚灵动款"
+                class="h-60 w-full object-cover"
+              />
+              <span class="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand">限时</span>
+            </div>
+            <div class="flex flex-1 flex-col gap-3 p-6">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-brand">云尚灵动款</h3>
+                <p class="text-brand-accent font-semibold">¥1,480</p>
+              </div>
+              <p class="text-sm text-brand/70">
+                城市通勤与功能运动混合设计，让每一步都成为焦点。
+              </p>
+              <div class="mt-auto flex items-center justify-between text-xs text-brand/60">
+                <span class="inline-flex items-center gap-1"><i class="fa-solid fa-city"></i> 城市通勤</span>
+                <span class="inline-flex items-center gap-1"><i class="fa-solid fa-feather"></i> 超轻</span>
+              </div>
+              <button
+                class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition transform hover:scale-105"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+                加入购物袋
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Feature highlights -->
+      <section id="features" class="mx-auto mt-20 max-w-6xl px-6 lg:px-8">
+        <div class="flex flex-col gap-12 lg:flex-row">
+          <div class="flex-1 space-y-6">
+            <h2 class="font-display text-3xl text-brand">驱动表现的核心科技</h2>
+            <p class="text-sm text-brand/70">
+              从跑道到街头，On不断打磨每一次落地与起跳。全新模块化中底、再生纤维鞋面以及智能芯片监测，为你的表现保驾护航。
+            </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="glass-card rounded-2xl p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-2xl">
+                <i class="fa-solid fa-wind text-brand-accent text-2xl"></i>
+                <h3 class="mt-4 font-semibold text-brand">CloudTec® Phase 分段缓震</h3>
+                <p class="mt-2 text-sm text-brand/70">动态节奏分段缓震，依据步态自动调节支撑。</p>
+              </div>
+              <div class="glass-card rounded-2xl p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-2xl">
+                <i class="fa-solid fa-recycle text-brand-accent text-2xl"></i>
+                <h3 class="mt-4 font-semibold text-brand">循环材质</h3>
+                <p class="mt-2 text-sm text-brand/70">高比例可回收材质应用，兼顾性能与环保。</p>
+              </div>
+              <div class="glass-card rounded-2xl p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-2xl">
+                <i class="fa-solid fa-signal text-brand-accent text-2xl"></i>
+                <h3 class="mt-4 font-semibold text-brand">智能配速芯片</h3>
+                <p class="mt-2 text-sm text-brand/70">实时记录配速、步频与心率，与On App同步。</p>
+              </div>
+              <div class="glass-card rounded-2xl p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-2xl">
+                <i class="fa-solid fa-droplet text-brand-accent text-2xl"></i>
+                <h3 class="mt-4 font-semibold text-brand">防泼水膜层</h3>
+                <p class="mt-2 text-sm text-brand/70">雨雪环境保持干爽，稳定性不受天气限制。</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative flex-1 overflow-hidden rounded-3xl">
+            <img
+              src="https://source.unsplash.com/featured/?running+technology"
+              alt="Technology detail"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand/80 via-brand/20 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/90 p-6 text-sm text-brand shadow-soft">
+              <p class="font-semibold">每一公里都被精准记录</p>
+              <p class="mt-2 text-xs text-brand/70">
+                On App基于云端算法，结合脚部传感器数据，为你匹配训练计划并实时推送反馈，打造专属运动旅程。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stories section -->
+      <section id="stories" class="mx-auto mt-20 max-w-6xl px-6 lg:px-8">
+        <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+          <div>
+            <h2 class="font-display text-3xl text-brand">社区故事</h2>
+            <p class="mt-2 text-sm text-brand/70">与来自全球的跑者分享灵感，加入On的轻盈部落。</p>
+          </div>
+          <a
+            href="#newsletter"
+            class="inline-flex items-center gap-2 rounded-full border border-brand px-5 py-2 text-sm font-semibold transition transform hover:scale-105"
+          >
+            <i class="fa-solid fa-users"></i>
+            加入社区
+          </a>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
+            <img
+              src="https://source.unsplash.com/featured/?group+running"
+              alt="Community run"
+              class="h-52 w-full object-cover"
+            />
+            <div class="flex flex-1 flex-col gap-3 p-6">
+              <span class="text-xs font-semibold uppercase text-brand/50">城市跑团</span>
+              <h3 class="text-lg font-semibold text-brand">黎明5公里挑战</h3>
+              <p class="text-sm text-brand/70">
+                上海陆家嘴晨跑团分享从零到半马的蜕变，解锁城市新节奏。
+              </p>
+              <button class="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-brand transition transform hover:translate-x-1">
+                阅读故事 <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
+            <img
+              src="https://source.unsplash.com/featured/?trail+runner"
+              alt="Trail runner"
+              class="h-52 w-full object-cover"
+            />
+            <div class="flex flex-1 flex-col gap-3 p-6">
+              <span class="text-xs font-semibold uppercase text-brand/50">越野征途</span>
+              <h3 class="text-lg font-semibold text-brand">高山微气候实验</h3>
+              <p class="text-sm text-brand/70">
+                瑞士工程师团队登顶阿尔卑斯，实测Cloudultra在严酷环境下表现。
+              </p>
+              <button class="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-brand transition transform hover:translate-x-1">
+                阅读故事 <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
+            <img
+              src="https://source.unsplash.com/featured/?fitness+coach"
+              alt="教练"
+              class="h-52 w-full object-cover"
+            />
+            <div class="flex flex-1 flex-col gap-3 p-6">
+              <span class="text-xs font-semibold uppercase text-brand/50">训练计划</span>
+              <h3 class="text-lg font-semibold text-brand">个性化配速指南</h3>
+              <p class="text-sm text-brand/70">
+                On教练团队联合体能专家设计，在App即可获取的8周训练课程。
+              </p>
+              <button class="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-brand transition transform hover:translate-x-1">
+                阅读故事 <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Try on CTA -->
+      <section id="try" class="mx-auto mt-20 max-w-6xl px-6 lg:px-8">
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand to-brand-light p-10 text-white shadow-soft">
+          <div class="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div class="max-w-xl space-y-4">
+              <h2 class="font-display text-3xl">门店试穿预约</h2>
+              <p class="text-sm text-white/70">
+                输入你的城市和时间，专属顾问将在24小时内与你确认。体验On最具代表性的能量回弹。
+              </p>
+            </div>
+            <form class="grid w-full max-w-md gap-3 text-brand" action="#">
+              <input
+                type="text"
+                placeholder="所在城市"
+                class="gradient-focus w-full rounded-full border border-white/30 px-5 py-3 text-sm placeholder:text-brand/50"
+              />
+              <input
+                type="date"
+                class="gradient-focus w-full rounded-full border border-white/30 px-5 py-3 text-sm text-brand/80"
+              />
+              <button
+                type="submit"
+                class="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-brand transition transform hover:scale-105"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+                提交预约
+              </button>
+            </form>
+          </div>
+          <img
+            src="https://source.unsplash.com/featured/?running+store"
+            alt="门店环境"
+            class="absolute -right-12 top-1/2 hidden h-72 w-72 -translate-y-1/2 rotate-12 rounded-3xl object-cover opacity-70 lg:block"
+          />
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section id="newsletter" class="mx-auto mt-20 max-w-6xl px-6 pb-24 lg:px-8">
+        <div class="grid gap-10 rounded-3xl bg-white p-10 shadow-soft lg:grid-cols-2">
+          <div class="space-y-4">
+            <span class="inline-flex items-center gap-2 rounded-full bg-brand/5 px-3 py-1 text-xs font-semibold text-brand">
+              <i class="fa-solid fa-envelope-open-text"></i>
+              第一时间获取新品
+            </span>
+            <h2 class="font-display text-3xl text-brand">订阅On能量周刊</h2>
+            <p class="text-sm text-brand/70">
+              订阅后将获得新品预售提醒、专业训练指南以及独家线下活动邀请。我们承诺保护你的隐私，不做垃圾邮件。
+            </p>
+          </div>
+          <form class="flex flex-col gap-4" action="#">
+            <input
+              type="email"
+              placeholder="输入邮箱地址"
+              class="gradient-focus rounded-full border border-brand/10 px-6 py-3 text-sm"
+              required
+            />
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <label class="flex items-center gap-2 text-xs text-brand/60">
+                <input type="checkbox" class="gradient-focus h-4 w-4 rounded border border-brand/20" />
+                我已阅读并同意隐私政策
+              </label>
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition transform hover:scale-105"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+                确认订阅
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom mobile navigation -->
+    <nav class="fixed inset-x-0 bottom-0 z-40 border-t border-brand/10 bg-white/95 backdrop-blur md:hidden">
+      <ul class="mx-auto flex max-w-md items-center justify-between px-8 py-3 text-xs font-semibold text-brand/60">
+        <li>
+          <a href="#home" class="flex flex-col items-center gap-1 transition hover:text-brand">
+            <i class="fa-solid fa-house"></i>
+            首页
+          </a>
+        </li>
+        <li>
+          <a href="#collections" class="flex flex-col items-center gap-1 transition hover:text-brand">
+            <i class="fa-solid fa-bag-shopping"></i>
+            选购
+          </a>
+        </li>
+        <li>
+          <a href="#features" class="flex flex-col items-center gap-1 transition hover:text-brand">
+            <i class="fa-solid fa-gem"></i>
+            科技
+          </a>
+        </li>
+        <li>
+          <a href="#stories" class="flex flex-col items-center gap-1 transition hover:text-brand">
+            <i class="fa-solid fa-user-group"></i>
+            社区
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="border-t border-brand/10 bg-white py-10">
+      <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6 text-sm text-brand/60 lg:flex-row lg:items-center lg:justify-between">
+        <p>© 2024 On 移动体验。保留所有权利。</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#" class="transition hover:text-brand">隐私政策</a>
+          <a href="#" class="transition hover:text-brand">使用条款</a>
+          <a href="#" class="transition hover:text-brand">客服支持</a>
+        </div>
+        <div class="flex items-center gap-4 text-lg text-brand">
+          <a href="#" class="transition hover:text-brand-accent"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="transition hover:text-brand-accent"><i class="fa-brands fa-weibo"></i></a>
+          <a href="#" class="transition hover:text-brand-accent"><i class="fa-brands fa-wechat"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

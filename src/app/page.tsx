@@ -1,103 +1,123 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+import { products, stories, events } from "@/data/store";
+import { ProductCard } from "@/components/store/ProductCard";
 
-export default function Home() {
+export default function HomePage() {
+  const trending = products.slice(0, 3);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="space-y-10 pb-6">
+      <section className="rounded-4xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 text-white shadow-xl">
+        <div className="flex flex-col gap-6">
+          <span className="inline-flex w-fit items-center rounded-full border border-white/30 px-4 py-1 text-xs tracking-[0.4em] uppercase text-white/70">
+            On 跑步俱乐部
+          </span>
+          <div className="space-y-3">
+            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">踏云而跑</h1>
+            <p className="text-sm text-white/80">
+              探索最新发售、定制你的比赛装备，并预约门店体验——所有流程都为 On 移动端商城优化。
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link href="/shop" className="w-full sm:w-auto">
+              <Button className="w-full">选购全系列</Button>
+            </Link>
+            <Link href="/support" className="w-full sm:w-auto">
+              <Button variant="secondary" className="w-full text-slate-900">
+                联系跑步顾问
+              </Button>
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section className="space-y-4">
+        <header className="flex items-center justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">精选推荐</p>
+            <h2 className="text-xl font-semibold text-slate-900">比赛季热销单品</h2>
+          </div>
+          <Link href="/shop" className="text-sm font-semibold text-slate-500 hover:text-slate-900">
+            查看全部
+          </Link>
+        </header>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {trending.map((product) => (
+            <ProductCard key={product.slug} product={product} />
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <header>
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">社群活动</p>
+          <h2 className="text-xl font-semibold text-slate-900">即将到来的体验</h2>
+        </header>
+        <div className="space-y-3">
+          {events.map((event) => (
+            <article key={event.id} className="rounded-3xl border border-slate-200 bg-white/90 p-5 shadow-sm">
+              <div className="flex items-start justify-between gap-3 text-sm text-slate-500">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{event.location}</p>
+                  <h3 className="mt-1 text-lg font-semibold text-slate-900">{event.title}</h3>
+                </div>
+                <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">{event.date}</span>
+              </div>
+              <p className="mt-4 text-sm text-slate-600">{event.description}</p>
+              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
+                预约席位 →
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <header className="flex items-center justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">故事精选</p>
+            <h2 className="text-xl font-semibold text-slate-900">灵感源自实验室</h2>
+          </div>
+          <Link href="/account" className="text-sm font-semibold text-slate-500 hover:text-slate-900">
+            会员中心
+          </Link>
+        </header>
+        <div className="space-y-3">
+          {stories.map((story) => (
+            <article key={story.id} className="rounded-3xl border border-slate-200 bg-white/80 p-5 shadow-sm">
+              <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-slate-400">
+                <span>{story.badge}</span>
+                <span>阅读时间 • 3 分钟</span>
+              </div>
+              <h3 className="mt-3 text-lg font-semibold text-slate-900">{story.title}</h3>
+              <p className="mt-2 text-sm text-slate-600">{story.excerpt}</p>
+              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
+                阅读更多 →
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-4xl border border-slate-200 bg-white/90 p-6 shadow-sm">
+        <div className="flex flex-col gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">会员权益</p>
+            <h2 className="text-xl font-semibold text-slate-900">解锁 On 跑步俱乐部礼遇</h2>
+          </div>
+          <ul className="space-y-3 text-sm text-slate-600">
+            <li>• 限量新品与联名优先购。</li>
+            <li>• 世界级运动员定制训练计划。</li>
+            <li>• 跑步实验室、门店活动与赛事周末邀约。</li>
+          </ul>
+          <Link href="/account" className="w-full">
+            <Button variant="secondary" className="w-full">
+              管理会员
+            </Button>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

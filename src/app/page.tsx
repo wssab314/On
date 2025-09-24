@@ -1,103 +1,88 @@
-import Image from "next/image";
+import Link from "next/link";
+import { FlowCard } from "@/components/FlowCard";
+import { categories, flows } from "@/data/flows";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-8">
+      <header className="grid gap-10 rounded-4xl border border-slate-200 bg-white/80 p-10 shadow-sm backdrop-blur sm:grid-cols-[1.1fr_0.9fr]">
+        <div className="space-y-6">
+          <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-100 px-4 py-1 text-xs font-semibold tracking-[0.3em] text-slate-500">
+            On mobile experience kit
+          </span>
+          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+            Rebuild the On Running iOS journey with reusable, responsive components.
+          </h1>
+          <p className="text-lg text-slate-600">
+            Explore {flows.length} reconstructed flows across onboarding, shopping, account, and support moments. Each screen uses mock data so you can focus on layout, motion, and storytelling.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm text-slate-500">
+            <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2">
+              <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" aria-hidden />
+              Interactive stepper preview
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2">
+              <span className="inline-flex h-2.5 w-2.5 rounded-full bg-sky-500" aria-hidden />
+              Tailwind-first mobile styling
+            </span>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="flex flex-col justify-between gap-6 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 text-white">
+          <div className="space-y-4">
+            <p className="text-xs uppercase tracking-[0.4em] text-white/70">Project timeline</p>
+            <h2 className="text-3xl font-semibold">From PNGs to pages</h2>
+            <p className="text-sm text-white/80">
+              Each module is mapped directly from the provided PNG references. Use this kit to validate flows, gather feedback, or extend with live data.
+            </p>
+          </div>
+          <Link
+            href="#flows"
+            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+          >
+            Jump to flows →
+          </Link>
+        </div>
+      </header>
+
+      <section id="flows" className="mt-16 space-y-16">
+        {categories.map((category) => {
+          const categoryFlows = flows.filter((flow) => flow.category === category.id);
+          if (categoryFlows.length === 0) {
+            return null;
+          }
+
+          return (
+            <div key={category.id} className="space-y-6">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{category.label}</p>
+                  <h2 className="text-2xl font-semibold text-slate-900">
+                    {categoryFlows.length} flow{categoryFlows.length === 1 ? "" : "s"}
+                  </h2>
+                </div>
+                <p className="max-w-xl text-sm text-slate-500">
+                  {category.id === "Discovery"
+                    ? "Onboarding, home, and discovery paths keep the momentum high."
+                    : category.id === "Shop"
+                    ? "Filter, compare, and deep dive into products with intent."
+                    : category.id === "Bag"
+                    ? "Checkout experiences with mock payments, gift cards, and progress."
+                    : category.id === "Account"
+                    ? "Account management, preferences, and sensitive actions."
+                    : category.id === "Support"
+                    ? "Assist customers with chat, FAQs, and store visits."
+                    : "Keep track of everything post-purchase."}
+                </p>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {categoryFlows.map((flow) => (
+                  <FlowCard key={flow.slug} flow={flow} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </section>
+    </main>
   );
 }
